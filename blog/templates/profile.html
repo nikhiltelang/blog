@@ -1,0 +1,70 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block profile %} active
+{% endblock %}
+{% load humanize %}
+{% block css %}
+<style>
+  body
+  {
+    font-family: sans-serif;
+    color: #3c3939;
+    background-color: #f1f1f1;
+  }
+  .profile-card
+  {
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5) ;
+  }
+  .image-container
+  {
+    position: relative;
+  }
+  .info
+  {
+    margin-right: 10px;
+  }
+  .main-container
+  {
+    padding: 20px;
+  }
+  .post-img
+  {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div class="profile-card my-3">
+  <div class="image-container">
+    <img src="/media/{{prof.profile_pic}}" style="width: 100%;">
+
+    <div class="title">
+      <h2>{{prof}}</h2>  
+    </div>
+    <!-- <div class="row"><a
+      type="button" class="btn btn-primary mx-4 my-1 form-control" id="follow" role="button" href="{% url 'follow' %}">Follow</a>
+    </div> -->
+  </div>
+  <div class="main-container">
+    <p><img src="{%static 'icons/geo-alt.svg'%}" class="info">followers :{{prof.followers}}</p>
+    <p><img src="{%static 'icons/geo-alt.svg'%}" class="info">following :{{prof.following}}</p>
+    <p><img src="{%static 'icons/geo-alt.svg'%}" class="info">{{prof.hometown}}</p>
+    <p><img src="{%static 'icons/heart.svg'%}" class="info">{{prof.relationship}}</p>
+    <p><img src="{%static 'icons/phone.svg'%}" class="info">{{prof.mobile}}</p>
+    <p><img src="{%static 'icons/mailbox.svg'%}" class="info">{{user.email}}</p> 
+  </div>
+  {% for i in post %}
+  <div class="image no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+    <div>{{i.title}}</div>
+    <div>{{i.publish_date | naturaltime}}</div>
+    <img src="{{i.thumbnail.url}}" class="post-img">
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock %}

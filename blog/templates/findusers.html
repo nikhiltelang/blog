@@ -1,0 +1,56 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block profile %} active
+{% endblock %}
+{% block css %}
+<style>
+  body
+  {
+    font-family: sans-serif;
+    color: #3c3939;
+    background-color: #f1f1f1;
+  }
+  .profile-card
+  {
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5) ;
+  }
+  .image-container
+  {
+    position: relative;
+  }
+  .info
+  {
+    margin-right: 10px;
+  }
+  .main-container
+  {
+    padding: 20px;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div class="profile-card my-3">
+<div class="image-container">
+<img src="" style="width: 100%;">
+<div class="form-group">
+  <label for="Full Name">Enter Username or Name</label>
+  <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+      <a  type="button" class="btn btn-primary mt-2 form-control" id="search" role="button" href="#">search</a>
+</div>
+
+    <div class="title">
+      <h2></h2>  
+    </div>
+  </div>
+  <div class="main-container"> 
+  {% for user in user %}
+  <div class=" my-1">
+    <a href="{% url 'profile' user%}"><h5>{{user}}</h5> </a> 
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

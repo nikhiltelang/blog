@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v4.1.1">
+  <title>Signin Template · Bootstrap</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+
+  <!-- Bootstrap core CSS -->
+  {%load static%}
+  <link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="{%static 'css/signin.css'%}" rel="stylesheet">
+</head>
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+<strong>Message :</strong> {{ message }}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span></button>
+</div>
+{% endfor %}
+<body class="text-center">
+
+
+  <form class="form-signin" method='POST' action="{% url 'signup' %}">{% csrf_token %} 
+    <img class="mb-4" src="#" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please Sign Up</h1>
+    <label for="First_Name" class="sr-only">First Name</label>
+    <input type="text" id="First_Name" class="form-control" placeholder="First Name" required autofocus name="First_Name">
+    <label for="Last_Name" class="sr-only">Last Name</label>
+    <input type="text" id="Last_Name" class="form-control" placeholder="LastName" required autofocus name="Last_Name">
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="email">
+    <label for="Username" class="sr-only">Username</label>
+    <input type="text" id="username" class="form-control" placeholder="username" required autofocus name="username">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="pass1">
+    <label for="Confirm Password" class="sr-only" id="conf">Confirm Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" required name="pass2">
+    <!-- <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div> -->
+    <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="myfunction() ">Sign Up</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+
+   <script>
+     function myfunction(){
+        console.log("work")
+
+     }
+
+   </script>
+  </form>
+</body>
+
+</html>
